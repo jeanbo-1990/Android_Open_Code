@@ -1,0 +1,38 @@
+一：测试分为以下几种情况
+  ①:启动方式
+	1.单独调用startService启动
+	2.单独调用bindService启动
+	3.先startService启动，然后bindService
+	4.先bindService，后startService
+  ②:结束方式
+    1.1.stopService,stopSelf
+    1.2.unBindService
+    2.1.stopService,stopSelf
+    2.2.unBindService
+    3.1.stopService,stopSelf
+    3.2.unBindService
+    4.1.stopService,stopSelf
+    4.2.unBindService
+
+
+最后测试结果
+1.单独startService,会执行onCreate-->onStartCommand-->onStart,
+	1).单独stopService,会执行onDestroy
+2.单独bindService,onCreate-->onBind,
+	1).单独unBindService,会执行onUnbind-->onDestroy
+3.先startService后bindService,会执行onCreate-->onStartCommand-->onStart-->onBind
+	1).先stopService没有任何反应，在执行unBindService,会执行onUnbind-->onDestroy
+	2).先unBindService会执行onUnbind,在执行stopService会执行onDestroy
+4.先bindService后startService,会执行onCreate-->onBind-->onStartCommand-->onStart
+	1).先stopService没有任何反应，在执行unBindService,会执行onUnbind-->onDestroy
+	2).先unBindService会执行onUnbind,在执行stopService会执行onDestroy
+最后总结	
+①：Service一旦创建了后即执行了onCreate，直到onDestroy后不会再执行onCreate
+②：用startService，如果Service已经创建了，那么在startService只会走onStartCommand
+③：用bindService启动，如果已经绑定了，同一个context不会再执行任何方法
+④：startService和bindService同时使用的时候，关闭Service必须stopService(或者stopSelf)和unBindService两个都要执行。
+
+有三种情况：如果直接使用服务，则没有必要进行绑定，但是如果要使用服务里面的方法，则要进行绑定。具体的启动情况有下：
+ 1.当启动时，单独调用bindService方法，在unbindService后，会执行service的onUnbind，在执行onDestroy方法。
+ 2.当启动时，先调用startService，再调用bindService方法后，在unbindService后，会执行service的onUnbind，不会执行onDestroy方法。除非你在执行stopService.
+ 3. 先调用startService，在调用stopService，会执行service的onDestroy方法。

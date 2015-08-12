@@ -9,20 +9,46 @@
         android:targetSdkVersion="18" />
 
     <application
+        android:name="application.ProjectApplication"
         android:allowBackup="true"
-        android:name="Application.ProjectApplication"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/open_code_app"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="Main.MainActivity"
+            android:name="main.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="service.ServiceLifeTimeActivity"
+            android:label="@string/service_menu_lifetime" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android_open_code.INTENT_FILTER_CATEGORY" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="notification.ClickShowResult"
+            android:label="@string/title_activity_click_show_result" >
+        </activity>
+        <activity
+            android:name="service.ServiceTestActivity"
+            android:label="@string/service_menu_testservice" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android_open_code.INTENT_FILTER_CATEGORY" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="service.ServiceLifeTime" />
+        <service android:name="service.ServiceTest" />
     </application>
 
 </manifest>
