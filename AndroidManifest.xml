@@ -46,6 +46,24 @@
                 <category android:name="com.example.android_open_code.INTENT_FILTER_CATEGORY" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="notification.MyNotificationActivity"
+            android:label="@string/notification_menu_demo" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android_open_code.INTENT_FILTER_CATEGORY" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="theme.ThemeSwitchActivity"
+            android:label="@string/theme_menu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.example.android_open_code.INTENT_FILTER_CATEGORY" />
+            </intent-filter>
+        </activity>
 
         <service android:name="service.ServiceLifeTime" />
         <service android:name="service.ServiceTest" />

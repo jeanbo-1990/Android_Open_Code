@@ -56,6 +56,10 @@ public class MainActivity extends ListActivity {
 			if (label == null || label.equals("")) {
 				continue;
 			}
+			
+			if(!label.toString().contains(path+"/")){
+				continue;
+			}
 
 			// pathºóµÄ²Ëµ¥
 			String strLabel = "";

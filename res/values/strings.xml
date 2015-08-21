@@ -19,4 +19,12 @@
     <string name="service_log">wjb_service_log</string>
     <string name="title_activity_click_show_result">ClickShowResult</string>
 
+    <string name="notification_menu_demo">通知/通知例子</string>
+    <string name="btn_name_system">系统样式</string>
+    <string name="btn_name_customer">自定义</string>
+    <string name="btn_notification_go">GO</string>
+    
+    <string name="theme_menu">主题/主题切换</string>
+    <string name="btn_theme1">主题1</string>
+    <string name="btn_theme2">主题2</string>
 </resources>
